@@ -1,3 +1,4 @@
+const react = require('react');
 const allIcons = require('@ant-design/icons/lib/icons');
 
 export interface MenuDataItem {
@@ -18,8 +19,8 @@ function formatter(data: MenuDataItem[]): MenuDataItem[] {
     if (item.icon) {
       const { icon } = item;
       const v4IconName = icon.replace(icon[0], icon[0].toUpperCase());
-      const newIcon = allIcons[icon] || allIcons[`${v4IconName}Outlined`];
-      item.icon = newIcon;
+      const NewIcon = allIcons[icon] || allIcons[`${v4IconName}Outlined`];
+      item.icon = react.createElement(NewIcon);
     }
     if (item.routes || item.children) {
       const children = formatter(item.routes || item.children);
