@@ -5,6 +5,8 @@
 
 Convert icon string to antd@4
 
+由于 pro-layout 支持在 config 中 icon=string 的配置，这个插件可以将其转化，不再引入全量的 icon。
+
 ## Install
 
 ```bash
@@ -23,10 +25,8 @@ Configure in `.umirc.js`,
 
 ```js
 export default {
-  plugins: [
-    ['umi-plugin-umi-plugin-antd-icon-config', options],
-  ],
-}
+  plugins: [['umi-plugin-umi-plugin-antd-icon-config', {}]],
+};
 ```
 
 ## Options
