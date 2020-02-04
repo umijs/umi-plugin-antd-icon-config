@@ -1,5 +1,5 @@
 const react = require('react');
-const allIcons = require('@ant-design/icons/lib/icons');
+const allIcons = require('@ant-design/icons/es/icons');
 
 export interface MenuDataItem {
   children?: MenuDataItem[];
