@@ -25,7 +25,7 @@ Configure in `.umirc.js`,
 
 ```js
 export default {
-  plugins: [['umi-plugin-umi-plugin-antd-icon-config', {}]],
+  plugins: [['umi-plugin-antd-icon-config', {}]],
 };
 ```
 
