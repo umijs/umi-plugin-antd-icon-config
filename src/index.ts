@@ -1,5 +1,5 @@
-import { IApi } from 'umi-types';
+import { IApi } from 'umi';
 
 export default function(api: IApi, options) {
-  api.addRuntimePlugin(require.resolve('./app.js'));
+  api.addRuntimePlugin(() => require.resolve('./app.js'));
 }
