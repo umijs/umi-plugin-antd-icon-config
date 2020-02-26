@@ -1,6 +1,6 @@
 {
   "name": "umi-plugin-antd-icon-config",
-  "version": "1.0.3",
+  "version": "2.0.0-0",
   "description": "Convert icon string to antd@4",
   "authors": {
     "name": "chenshuai2144",
