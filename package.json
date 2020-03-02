@@ -2,19 +2,21 @@
   "name": "umi-plugin-antd-icon-config",
   "version": "2.0.0-0",
   "description": "Convert icon string to antd@4",
-  "authors": {
-    "name": "chenshuai2144",
-    "email": "qixian.cs@outlook.com"
-  },
-  "repository": "/umi-plugin-antd-icon-config",
-  "peerDependencies": {
-    "umi": "3.x"
-  },
+  "repository": "https://github.com/umijs/umi-plugin-antd-icon-config",
+  "license": "MIT",
   "main": "lib/index.js",
+  "files": [
+    "lib",
+    "src",
+    "ui"
+  ],
   "scripts": {
-    "start": "cross-env APP_ROOT=$PWD/example umi dev",
     "build": "father-build",
-    "prepublishOnly": "npm run build && np --no-cleanup --yolo --no-publish"
+    "prepublishOnly": "npm run build && np --no-cleanup --yolo --no-publish",
+    "start": "cross-env APP_ROOT=$PWD/example umi dev"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.0.0"
   },
   "devDependencies": {
     "cross-env": "^6.0.3",
@@ -22,13 +24,11 @@
     "np": "^5.0.3",
     "umi": "^3.0.0"
   },
-  "files": [
-    "lib",
-    "src",
-    "ui"
-  ],
-  "license": "MIT",
-  "dependencies": {
-    "@ant-design/icons": "^4.0.0-alpha.19"
+  "peerDependencies": {
+    "umi": "3.x"
+  },
+  "authors": {
+    "name": "chenshuai2144",
+    "email": "qixian.cs@outlook.com"
   }
 }
