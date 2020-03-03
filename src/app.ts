@@ -43,6 +43,6 @@ function formatter(data: MenuDataItem[]): MenuDataItem[] {
   return data;
 }
 
-export function patchRoutes(routes) {
+export function patchRoutes({ routes }) {
   formatter(routes);
 }
