@@ -1,5 +1,6 @@
 const react = require('react');
-const allIcons = require('@ant-design/icons/es/icons');
+// @ts-ignore
+import allIcons from '@@/plugin-antd-icon/icons';
 
 export interface MenuDataItem {
   children?: MenuDataItem[];
@@ -13,9 +14,8 @@ export interface MenuDataItem {
   path?: string;
   [key: string]: any;
 }
-
 function toHump(name: string) {
-  return name.replace(/\-(\w)/g, function(all, letter) {
+  return name.replace(/\-(\w)/g, function (all, letter) {
     return letter.toUpperCase();
   });
 }
