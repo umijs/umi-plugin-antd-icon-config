@@ -15,13 +15,16 @@ export interface MenuDataItem {
   [key: string]: any;
 }
 function toHump(name: string) {
-  return name.replace(/\-(\w)/g, function (all, letter) {
+  return name.replace(/\-(\w)/g, function(all, letter) {
     return letter.toUpperCase();
   });
 }
 
 function formatter(data: MenuDataItem[]): MenuDataItem[] {
-  data.forEach((item = { path: '/' }) => {
+  if (Array.isArray(data)) {
+    return data;
+  }
+  (data || []).forEach((item = { path: '/' }) => {
     if (item.icon) {
       const { icon } = item;
       const v4IconName = toHump(icon.replace(icon[0], icon[0].toUpperCase()));

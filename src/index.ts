@@ -15,14 +15,17 @@ export interface MenuDataItem {
 }
 
 function toHump(name: string) {
-  return name.replace(/\-(\w)/g, function (all, letter) {
+  return name.replace(/\-(\w)/g, function(all, letter) {
     return letter.toUpperCase();
   });
 }
 
 function formatter(data: MenuDataItem[]): MenuDataItem[] {
+  if (Array.isArray(data)) {
+    return [];
+  }
   let icons = [];
-  data.forEach((item = { path: '/' }) => {
+  (data || []).forEach((item = { path: '/' }) => {
     if (item.icon) {
       const { icon } = item;
       const v4IconName = toHump(icon.replace(icon[0], icon[0].toUpperCase()));
@@ -41,12 +44,12 @@ function formatter(data: MenuDataItem[]): MenuDataItem[] {
   return Array.from(new Set(icons));
 }
 
-export default function (api: IApi) {
+export default function(api: IApi) {
   api.onGenerateFiles(() => {
     const { userConfig } = api;
     const icons = formatter(userConfig.routes);
     let iconsString = icons.map(
-      (iconName) => `import ${iconName} from '@ant-design/icons/${iconName}'`,
+      iconName => `import ${iconName} from '@ant-design/icons/${iconName}'`,
     );
     api.writeTmpFile({
       path: './plugin-antd-icon/icons.ts',
