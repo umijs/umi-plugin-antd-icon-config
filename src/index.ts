@@ -21,7 +21,7 @@ function toHump(name: string) {
 }
 
 function formatter(data: MenuDataItem[]): MenuDataItem[] {
-  if (Array.isArray(data)) {
+  if (!Array.isArray(data)) {
     return [];
   }
   let icons = [];
