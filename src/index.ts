@@ -1,5 +1,7 @@
 import { IApi } from 'umi';
 import * as allIcons from '@ant-design/icons';
+import { join } from 'path';
+import { readFileSync } from 'fs';
 
 export interface MenuDataItem {
   children?: MenuDataItem[];
@@ -15,7 +17,7 @@ export interface MenuDataItem {
 }
 
 function toHump(name: string) {
-  return name.replace(/\-(\w)/g, function(all, letter) {
+  return name.replace(/\-(\w)/g, function (all, letter) {
     return letter.toUpperCase();
   });
 }
@@ -44,12 +46,12 @@ function formatter(data: MenuDataItem[]): MenuDataItem[] {
   return Array.from(new Set(icons));
 }
 
-export default function(api: IApi) {
+export default function (api: IApi) {
   api.onGenerateFiles(() => {
     const { userConfig } = api;
     const icons = formatter(userConfig.routes);
     let iconsString = icons.map(
-      iconName => `import ${iconName} from '@ant-design/icons/${iconName}'`,
+      (iconName) => `import ${iconName} from '@ant-design/icons/${iconName}'`,
     );
     api.writeTmpFile({
       path: './plugin-antd-icon/icons.ts',
@@ -61,6 +63,11 @@ export default {
 }
     `,
     });
+
+    api.writeTmpFile({
+      path: './plugin-antd-icon-config/app.ts',
+      content: readFileSync(join(__dirname, './app.ts.tpl'), 'utf-8'),
+    });
   });
-  api.addRuntimePlugin(() => require.resolve('./app.js'));
+  api.addRuntimePlugin(() => ['@@/plugin-antd-icon-config/app.ts']);
 }

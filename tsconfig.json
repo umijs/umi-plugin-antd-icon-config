@@ -13,6 +13,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "experimentalDecorators": true,
-    "declaration": false
+    "declaration": false,
+    "skipLibCheck": true
   }
 }
