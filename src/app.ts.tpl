@@ -1,5 +1,4 @@
-const react = require('react');
-// @ts-ignore
+import React from 'react';
 import allIcons from '@@/plugin-antd-icon/icons';
 
 export interface MenuDataItem {
@@ -15,7 +14,7 @@ export interface MenuDataItem {
   [key: string]: any;
 }
 function toHump(name: string) {
-  return name.replace(/\-(\w)/g, function(all, letter) {
+  return name.replace(/\-(\w)/g, function (all, letter) {
     return letter.toUpperCase();
   });
 }
@@ -31,7 +30,7 @@ function formatter(data: MenuDataItem[]): MenuDataItem[] {
       const NewIcon = allIcons[icon] || allIcons[`${v4IconName}Outlined`];
       if (NewIcon) {
         try {
-          item.icon = react.createElement(NewIcon);
+          item.icon = React.createElement(NewIcon);
         } catch (error) {
           console.log(error);
         }
