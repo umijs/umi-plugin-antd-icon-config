@@ -48,7 +48,7 @@ function formatter(data: MenuDataItem[]): MenuDataItem[] {
 
 export default function (api: IApi) {
   api.describe({
-    id: 'antd-icon-config',
+    key: 'antd-icon-config',
   });
   api.onGenerateFiles(() => {
     const { userConfig } = api;
