@@ -20,28 +20,26 @@ function toHump(name: string) {
 }
 
 function formatter(data: MenuDataItem[]): MenuDataItem[] {
-  if (!Array.isArray(data)) {
-    return data;
-  }
-  (data || []).forEach((item = { path: '/' }) => {
-    if (item.icon) {
-      const { icon } = item;
-      const v4IconName = toHump(icon.replace(icon[0], icon[0].toUpperCase()));
-      const NewIcon = allIcons[icon] || allIcons[`${v4IconName}Outlined`];
-      if (NewIcon) {
-        try {
-          item.icon = React.createElement(NewIcon);
-        } catch (error) {
-          console.log(error);
+    for(const key in data){
+      const item = data[key] || {path : '/'};
+      if (item.icon) {
+        const { icon } = item;
+        const v4IconName = toHump(icon.replace(icon[0], icon[0].toUpperCase()));
+        const NewIcon = allIcons[icon] || allIcons[`${v4IconName}Outlined`];
+        if (NewIcon) {
+          try {
+            item.icon = React.createElement(NewIcon);
+          } catch (error) {
+            console.log(error);
+          }
         }
       }
+      if (item.routes || item.children) {
+        const children = formatter(item.routes || item.children);
+        // Reduce memory usage
+        item.children = children;
+      }
     }
-    if (item.routes || item.children) {
-      const children = formatter(item.routes || item.children);
-      // Reduce memory usage
-      item.children = children;
-    }
-  });
   return data;
 }
 
