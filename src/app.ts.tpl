@@ -35,7 +35,7 @@ function formatter(data: MenuDataItem[]): MenuDataItem[] {
         }
       }
       if (item.routes || item.children) {
-        const children = formatter(item.routes || item.children);
+        const children = formatter(item.children || item.routes);
         // Reduce memory usage
         item.children = children;
       }
