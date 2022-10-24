@@ -47,6 +47,9 @@ function formatter(data: MenuDataItem[]): MenuDataItem[] {
 }
 
 export default function (api: IApi) {
+  api.describe({
+    id: 'antd-icon-config',
+  });
   api.onGenerateFiles(() => {
     const { userConfig } = api;
     const icons = formatter(userConfig.routes);
@@ -54,7 +57,7 @@ export default function (api: IApi) {
       (iconName) => `import ${iconName} from '@ant-design/icons/${iconName}'`,
     );
     api.writeTmpFile({
-      path: './plugin-antd-icon/icons.ts',
+      path: '../plugin-antd-icon/icons.ts',
       content: `
 ${iconsString.join(';\n')}
 
@@ -65,7 +68,7 @@ export default {
     });
 
     api.writeTmpFile({
-      path: './plugin-antd-icon-config/app.ts',
+      path: '../plugin-antd-icon-config/app.ts',
       content: readFileSync(join(__dirname, './app.ts.tpl'), 'utf-8'),
     });
   });

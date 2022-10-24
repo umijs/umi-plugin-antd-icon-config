@@ -1,6 +1,6 @@
 {
   "name": "umi-plugin-antd-icon-config",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "Convert icon string to antd@4",
   "repository": "https://github.com/umijs/umi-plugin-antd-icon-config",
   "license": "MIT",
@@ -22,10 +22,10 @@
     "cross-env": "^6.0.3",
     "father-build": "^1.8.0",
     "np": "^5.0.3",
-    "umi": "^3.0.0"
+    "umi": "^4.0.0"
   },
   "peerDependencies": {
-    "umi": "3.x"
+    "umi": "4.x"
   },
   "authors": {
     "name": "chenshuai2144",

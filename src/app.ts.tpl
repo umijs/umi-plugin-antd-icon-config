@@ -36,8 +36,8 @@ function formatter(data: MenuDataItem[]): MenuDataItem[] {
         }
       }
     }
-    if (item.routes || item.children) {
-      const children = formatter(item.routes || item.children);
+    if (item.children || item.routes) {
+      const children = formatter(item.children || item.routes);
       // Reduce memory usage
       item.children = children;
     }
@@ -45,6 +45,6 @@ function formatter(data: MenuDataItem[]): MenuDataItem[] {
   return data;
 }
 
-export function patchRoutes({ routes }) {
-  formatter(routes);
+export function patchClientRoutes(props) {
+  formatter(props.routes);
 }
